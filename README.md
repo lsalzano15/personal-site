@@ -95,7 +95,7 @@ This is a jumping off point for people who would like to have their own personal
 
 - On **your repo** click the 'Clone or Download' dropdown and then copy the URL to your clipboard (see below)
 
-![image](https://user-images.githubusercontent.com/41012778/79755347-f7d14f00-82e6-11ea-97d8-7cca5d6a1bc7.png)
+![image](https://user-images.githubusercontent.com/41012778/80934768-ac637a00-8d97-11ea-984d-4a6c3b34017a.png)
 
 - Go to your Terminal and type the following:
   - Note -- you'll want to navigate in your Terminal / Command Prompt to a directory (folder) where your project can live long-term. See the Command Line Notes / Cheat Sheet for more info.
@@ -120,7 +120,49 @@ $ npm start
 
 - go to `http://localhost:5000` in your browser to test if it’s working, you should see:
 
-![image](https://user-images.githubusercontent.com/41012778/79756126-26035e80-82e8-11ea-8bc3-892f5a5afa20.png)
+![image](https://user-images.githubusercontent.com/41012778/80935134-3a8c3000-8d99-11ea-8a2b-5260447d3180.png)
+
+### Subbing in a Template
+Now is the hardest part -- picking a template that works for you!
+
+**NOTE (IMPORTANT)** - Make sure not to steal anyone's intellectual property. Here we'll talk about licensing and giving credit where credit is due, especially for these HTML + CSS templates.
+
+From [templated.co]()s FAQ page:
+![image](https://user-images.githubusercontent.com/41012778/80320436-582f2780-87e4-11ea-8385-36389ad1f6d0.png)
+
+Template Sites
+- [templated.co](https://templated.co/)
+- [HTML5 Up](https://html5up.net/) <------- my site uses the 'Identity' template from here
+
+#### Steps
+We will simply replace the HTML code for the site we just deployed with the HTML code from a template.
+
+- **Step 1**: Pick your template
+
+- **Step 2**: Download the template
+  - This will likely download a zip file containing all of the template files to your Downloads folder
+
+![image](https://user-images.githubusercontent.com/41012778/80320579-384c3380-87e5-11ea-97e5-74b4bef31bf5.png)
+
+- **Step 3**: Copy the template to your starter project
+
+- **Step 4**: Tell Express to use the template's HTML
+  - Go to your `index.js` file (should be at the top level of your project) and make it look like this:
+
+```js
+express()
+  .use('/', express.static(path.join(__dirname, '<NAME OF YOUR TEMPLATE FOLDER>')))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+```
+
+- Run the application locally:
+```
+npm start
+```
+
+- Go to `localhost:5000` and you should see your template!! Next, we'll update the template with all of your information and deploy it to Heroku:
+
+- **Step 5**: Personalize the Template (Coming Soon)
 
 ### Use Heroku to deploy the site to the web
 
@@ -132,20 +174,15 @@ $ heroku open
 
 - It will take a couple seconds, but it should redirect you to your browser where you can see the site deployed onto the web with a designated URL that Heroku picked. These URLs can be swapped for your own domain, once you purchase it! 
 
-![image](https://user-images.githubusercontent.com/41012778/79757117-9f4f8100-82e9-11ea-988a-46b543e399eb.png)
+< IMG >
 
-### Personalize the Site!!
+### Making Changes
 
-- We can now update the starter code to give this website a more personal feel. See my [first wave of changes](https://github.com/joor-jordanb/node-js-getting-started/commit/59109e4f2a8d9a003d52502033451f8197b3dd8f?diff=split) when I was personalizing my site. The "diff" that is linked here shows a few updates:
-![image](https://user-images.githubusercontent.com/41012778/79758149-0588d380-82eb-11ea-87c1-f904a52b0bb9.png)
+- The flow for quickly making and testing out changes to your site is the following:
 
-- The idea is that you can build off of this starter site and add whatever you'd like. In upcoming tutorials we'll personalize everything about this site, but for now have fun with it and see what you can update! I added a picture, my linkedin, and my github.
+  - _TODO: add npm up/down flow_
 
-
-### Test Out Your Changes!!
-- The flow for quickly testing out changes to your site is the following:
-
-  - Update some code, say your [`views/pages/index.ejs`](https://github.com/joor-jordanb/node-js-getting-started/blob/master/views/pages/index.ejs#L16)
+  - Update some code, say your index.html
 
   - Go to `localhost:5000` in your browser, refresh the page and you should see your changes
 
@@ -187,56 +224,5 @@ $ heroku open
     $ heroku open
     ```
 
-### Subbing in a Template
-Our site is beautiful, but there are so many templates we can use to make it even better. **NOTE (IMPORTANT)** - Make sure not to steal anyone's intellectual property. Here we'll talk about licensing and giving credit where credit is due, especially for these HTML + CSS templates.
-
-From [templated.co]()s FAQ page:
-![image](https://user-images.githubusercontent.com/41012778/80320436-582f2780-87e4-11ea-8385-36389ad1f6d0.png)
-
-Template Sites
-- [templated.co](https://templated.co/)
-- [HTML5 Up](https://html5up.net/)
-
-#### Steps
-We will simply replace the HTML code for the site we just deployed with the HTML code from a template.
-
-- **Step 1**: Pick your template
-
-![image](https://user-images.githubusercontent.com/41012778/80320516-d8558d00-87e4-11ea-84b9-307bb054f324.png)
-
-  - Here, I've picked the ['Industrious' template](https://templated.co/industrious) from [templated.co](https://templated.co/).
-
-- **Step 2**: Download the template
-  - Download the template by clicking the button in the top right
-  - This will likely download a zip file containing all of the template files to your Downloads folder
-
-![image](https://user-images.githubusercontent.com/41012778/80320579-384c3380-87e5-11ea-97e5-74b4bef31bf5.png)
-
-- **Step 3**: Copy the template to your starter project
-  - We want to simply copy from our Downloads folder (or wherever we downloaded the template) to the top level of our project (under `node-js-getting-started`)
-![image](https://user-images.githubusercontent.com/41012778/80320683-d8a25800-87e5-11ea-8099-e5eefa1ad9c6.png)
-
-- **Step 4**: Tell Express to use the template's HTML
-  - Go to your `index.js` file (should be at the top level of your project) and make it look like this:
-
-```js
-express()
-  .use('/', express.static(path.join(__dirname, '<NAME OF YOUR TEMPLATE FOLDER>')))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-```
-![image](https://user-images.githubusercontent.com/41012778/80320857-f3c19780-87e6-11ea-83da-e45f892c9f71.png)
-
-
-- Run the application locally:
-```
-npm start
-```
-
-- Go to `localhost:5000` and you should see your template!! Next, we'll update the template with all of your information and deploy it to Heroku:
-
-![image](https://user-images.githubusercontent.com/41012778/80320934-66cb0e00-87e7-11ea-8898-792120363e02.png)
-
-
-- **Step 5**: Personalize the Template (Coming Soon)
 - **Step 6**: Redeploy!
   - [Test out Changes and Redeploy to Heroku](https://github.com/joor-jordanb/node-js-getting-started/wiki/Build-Your-Own-Personal-Site/#test-out-your-changes)
